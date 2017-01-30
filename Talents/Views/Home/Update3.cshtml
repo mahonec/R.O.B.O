@@ -1,0 +1,578 @@
+﻿@model Talents.Models.People
+
+<div style="width:100%;" class="container-fluid" align="center">
+    <br />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        .required:before {
+            content: '*';
+            margin-right: 4px;
+            color: red;
+        }
+    </style>
+
+    <div class="row" style="border:groove; border-bottom-width:3px; width:60%;" align="left">
+        <h1 style="margin:20px">Banco de Talentos - Easy Communication & Technology</h1><br />
+        <div class="col-lg-11" align="justify">
+            <span class="btn btn-primary" style="width:100%"><h3>Knowledge / Conhecimentos</h3></span>
+            <br />
+            <br />
+            <p>Rate yourself from 0 to 5 for the knowledge specified below, and that's okay if you do not know many things, the important thing is to be honest! / Avalie-se de 0 a 5 quanto aos conhecimentos especificados abaixo, e tudo bem se não souber de muitas coisas, o importante é que seja sincero!</p>
+            <label style="color:darkred" class="warning">* Required</label><br /><br />
+
+            <form asp-action="Update3" novalidate>
+                <div class="form-group" hidden="hidden">
+                    <input asp-for="PeopleId" class="form-control" required="required" />
+                    <input asp-for="Skype" class="form-control" required="required" />
+                    <input asp-for="Email" class="form-control" required="required" />
+                    <input asp-for="Phone" class="form-control" required="required" />
+                    <input asp-for="CountryId" class="form-control" required="required" />
+                    <input asp-for="ProvinceId" class="form-control" required="required" />
+                    <input asp-for="CityId" class="form-control" required="required" />
+                    <input asp-for="ScheduleAvaiableAnswersCheckedString" class="form-control" required="required" />
+                    <input asp-for="BestScheduleAnswersCheckedString" class="form-control" required="required" />
+                    <input asp-for="Price" class="form-control" />
+                    <input asp-for="Name" class="form-control" />
+                    <input asp-for="CPF" class="form-control" />
+                    <input asp-for="Bank" class="form-control" />
+                    <input asp-for="Agency" class="form-control" />
+                    <input asp-for="AccountNumber" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="KnowledgeIonicSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeIonicSelected", item.Value.ToString(), (Model.KnowledgeIonicSelected != null && item.Value.ToString() == Model.KnowledgeIonicSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeAndroidSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeAndroidSelected", item.Value.ToString(), (Model.KnowledgeAndroidSelected != null && item.Value.ToString() == Model.KnowledgeAndroidSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeIOSSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeIOSSelected", item.Value.ToString(), (Model.KnowledgeIOSSelected != null && item.Value.ToString() == Model.KnowledgeIOSSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeHTMLSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeHTMLSelected", item.Value.ToString(), (Model.KnowledgeHTMLSelected != null && item.Value.ToString() == Model.KnowledgeHTMLSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeCSSSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeCSSSelected", item.Value.ToString(), (Model.KnowledgeCSSSelected != null && item.Value.ToString() == Model.KnowledgeCSSSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeBootstrapSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeBootstrapSelected", item.Value.ToString(), (Model.KnowledgeBootstrapSelected != null && item.Value.ToString() == Model.KnowledgeBootstrapSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeJquerySelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeJquerySelected", item.Value.ToString(), (Model.KnowledgeJquerySelected != null && item.Value.ToString() == Model.KnowledgeJquerySelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeAngularJsSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeAngularJsSelected", item.Value.ToString(), (Model.KnowledgeAngularJsSelected != null && item.Value.ToString() == Model.KnowledgeAngularJsSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeJavaSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeJavaSelected", item.Value.ToString(), (Model.KnowledgeJavaSelected != null && item.Value.ToString() == Model.KnowledgeJavaSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeAspNetMVCSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeAspNetMVCSelected", item.Value.ToString(), (Model.KnowledgeAspNetMVCSelected != null && item.Value.ToString() == Model.KnowledgeAspNetMVCSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeCSharpSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeCSharpSelected", item.Value.ToString(), (Model.KnowledgeCSharpSelected != null && item.Value.ToString() == Model.KnowledgeCSharpSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeCSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeCSelected", item.Value.ToString(), (Model.KnowledgeCSelected != null && item.Value.ToString() == Model.KnowledgeCSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeCakeSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeCakeSelected", item.Value.ToString(), (Model.KnowledgeCakeSelected != null && item.Value.ToString() == Model.KnowledgeCakeSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeJangoSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeJangoSelected", item.Value.ToString(), (Model.KnowledgeJangoSelected != null && item.Value.ToString() == Model.KnowledgeJangoSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeMajentoSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeMajentoSelected", item.Value.ToString(), (Model.KnowledgeMajentoSelected != null && item.Value.ToString() == Model.KnowledgeMajentoSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgePHPSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgePHPSelected", item.Value.ToString(), (Model.KnowledgePHPSelected != null && item.Value.ToString() == Model.KnowledgePHPSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="KnowledgeWordpressSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeWordpressSelected", item.Value.ToString(), (Model.KnowledgeWordpressSelected != null && item.Value.ToString() == Model.KnowledgeWordpressSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgePhytonSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgePhytonSelected", item.Value.ToString(), (Model.KnowledgePhytonSelected != null && item.Value.ToString() == Model.KnowledgePhytonSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeRubySelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeRubySelected", item.Value.ToString(), (Model.KnowledgeRubySelected != null && item.Value.ToString() == Model.KnowledgeRubySelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeSQLServerSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeSQLServerSelected", item.Value.ToString(), (Model.KnowledgeSQLServerSelected != null && item.Value.ToString() == Model.KnowledgeSQLServerSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeMySQLSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeMySQLSelected", item.Value.ToString(), (Model.KnowledgeMySQLSelected != null && item.Value.ToString() == Model.KnowledgeMySQLSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeSalesforceSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeSalesforceSelected", item.Value.ToString(), (Model.KnowledgeSalesforceSelected != null && item.Value.ToString() == Model.KnowledgeSalesforceSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KnowledgePhotoshopSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgePhotoshopSelected", item.Value.ToString(), (Model.KnowledgePhotoshopSelected != null && item.Value.ToString() == Model.KnowledgePhotoshopSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="KnowledgeIllustratorSelected" class="required"></label>
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="col-lg-3">
+                            <p>I don't know / Não conheço</p>
+                        </div>
+                        @foreach (var item in Model.KnowledgeOptions)
+                        {
+                            <div class="col-xs-1">
+                                @Html.RadioButton("KnowledgeIllustratorSelected", item.Value.ToString(), (Model.KnowledgeIllustratorSelected != null && item.Value.ToString() == Model.KnowledgeIllustratorSelected.Trim()))<br />
+                                @item.Text
+                            </div>
+                        }
+                        <div class="col-xs-2">
+                            <p>Senior</p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="form-group">
+                    <label asp-for="AnotherKnowledges" class="control-label"></label>
+                    <br />
+                    <div>
+                        <input asp-for="AnotherKnowledges" class="form-control" />
+                        <span asp-validation-for="AnotherKnowledges" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="alert-danger">
+                    <h4>Enter the link here CRUD (create, update, delete)- read information in the welcome document quoted in the form description./ Insira aqui o link do CRUD (create, update, delete)- ler informações no documento de Boas Vindas citado na descrição do formulário.</h4>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LinkCrud" class="control-label"></label>
+                    <br />
+                    <div>
+                        <input asp-for="LinkCrud" class="form-control" />
+                        <span asp-validation-for="LinkCrud" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="alert-danger">
+                    <h4>Tutorials - Check out our tutorials and material explaining how the company works / Confira nossos tutoriais e material explicando como a empresa funciona.</h4>
+                </div>
+                <a>https://docs.google.com/document/d/145QuJ8-efr-pmNGV-2DOOGHD-1dc3MERSeL5g0XoqmM</a>
+
+
+                @if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+                {
+                    <div style="width:100%">
+                        <textarea elastic style="font-weight:bold; resize:none; max-width:100%; text-wrap: avoid; width:100%;" readonly="readonly">@ViewBag.ErrorMessage </textarea>
+                    </div>
+                }
+                <br />
+                <br />
+                <div align="right">
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-check"></i>
+                    </button>
+                    <a asp-action="Update2" asp-route-id="@ViewBag.People.PeopleId" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                    </a>
+                    <a asp-action="Index" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <br />
+            </form>
+
+        </div>
+    </div>
+</div>

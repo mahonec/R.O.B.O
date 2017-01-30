@@ -1,0 +1,130 @@
+﻿@model Talents.Models.People
+
+<div style="width:100%;" class="container-fluid" align="center">
+    <br />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        .required:before {
+            content: '*';
+            margin-right: 4px;
+            color: red;
+        }
+    </style>
+
+    <div class="row" style="border:groove; border-bottom-width:3px; width:60%;" align="left">
+        <h1 style="margin:20px">Banco de Talentos - Easy Communication & Technology</h1><br />
+        <div class="col-lg-11" align="justify">
+            <span class="btn btn-primary" style="width:100%"><h3>Bank Information / Informação bancária</h3></span>
+            <label style="color:darkred" class="warning">* Required</label><br /><br />
+            <form asp-action="Update2" novalidate>
+                <br />
+
+                <div class="form-group" hidden="hidden">
+                    <input asp-for="PeopleId" class="form-control" required="required" />
+                    <input asp-for="Skype" class="form-control" required="required" />
+                    <input asp-for="Email" class="form-control" required="required" />
+                    <input asp-for="Phone" class="form-control" required="required" />
+                    <input asp-for="CountryId" class="form-control" required="required" />
+                    <input asp-for="ProvinceId" class="form-control" required="required" />
+                    <input asp-for="CityId" class="form-control" required="required" />
+                    <input asp-for="ScheduleAvaiableAnswersCheckedString" class="form-control" required="required" />
+                    <input asp-for="BestScheduleAnswersCheckedString" class="form-control" required="required" />
+                    <input asp-for="Price" class="form-control" />
+                    <input asp-for="KnowledgeIonicSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeAndroidSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeIOSSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeHTMLSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeCSSSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeBootstrapSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeJquerySelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeAngularJsSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeJavaSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeAspNetMVCSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeCSharpSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeCSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeCakeSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeJangoSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeMajentoSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgePHPSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeWordpressSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgePhytonSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeRubySelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeSQLServerSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeMySQLSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeSalesforceSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgePhotoshopSelected" class="form-control" required="required" />
+                    <input asp-for="KnowledgeIllustratorSelected" class="form-control" required="required" />
+                    <input asp-for="AnotherKnowledges" class="form-control" required="required" />
+                    <input asp-for="LinkCrud" class="form-control" required="required" />
+                    
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="required"></label>
+                    <br />
+                    <div>
+                        <input asp-for="Name" class="form-control" readonly="readonly"/>
+                        <span asp-validation-for="Name" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CPF" class="required"></label>
+                    <br />
+                    <div>
+                        <input asp-for="CPF" class="form-control" />
+                        <span asp-validation-for="CPF" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Bank" class="control-label"></label>
+                    <br />
+                    <div>
+                        <input asp-for="Bank" class="form-control" />
+                        <span asp-validation-for="Bank" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Agency" class="control-label"></label>
+                    <br />
+                    <div>
+                        <input asp-for="Agency" class="form-control" />
+                        <span asp-validation-for="Agency" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="AccountNumber" class="control-label"></label>
+                    <br />
+                    <div>
+                        <input asp-for="AccountNumber" class="form-control" />
+                        <span asp-validation-for="AccountNumber" class="text-danger" />
+                    </div>
+                </div>
+
+                @if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+                {
+                    <div style="width:100%">
+                        <textarea elastic style="font-weight:bold; resize:none; max-width:100%; text-wrap: avoid; width:100%;" readonly="readonly">@ViewBag.ErrorMessage </textarea>
+                    </div>
+                }
+                <br />
+                <br />
+                <div align="right">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-forward"></i>
+                    </button>
+                    <a asp-action="Update" asp-route-id="@ViewBag.People.PeopleId" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                    </a>
+                    <a asp-action="Index" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <br />
+            </form>
+
+        </div>
+    </div>
+</div>
