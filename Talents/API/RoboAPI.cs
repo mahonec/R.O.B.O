@@ -103,6 +103,17 @@ namespace Robo.API
         {
             try
             {
+                if (_model.CotoveloEsquerdo != 3)
+                    _model.PulsoEsquerdo = 3;
+
+                if (_model.CotoveloDireito != 3)
+                    _model.PulsoDireito = 3;
+
+                if (_model.HeadInclination == 3)
+                    _model.HeadRotation = 3;
+
+
+
                 using (RoboContext db = new RoboContext())
                 {
                     db.Entry(_model).State = EntityState.Modified;

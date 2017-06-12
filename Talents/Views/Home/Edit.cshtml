@@ -1,9 +1,12 @@
 ﻿@model Robo.Models.Robo
+@using Newtonsoft.Json
 <html>
 <head>
     <title>Index</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript">
+
         $(document).ready(function () {
             change();
         });
@@ -21,6 +24,67 @@
 
                 }
             });
+        }
+
+        function getCurrent(field)
+        {
+            var data = @Html.Raw(JsonConvert.SerializeObject(this.Model));
+
+            if (field == "CotoveloEsquerdo")
+                return data.CotoveloEsquerdo;
+
+        }
+
+
+        function back(field) {
+             var data = @Html.Raw(JsonConvert.SerializeObject(this.Model));
+                var value = parseInt(document.getElementById(field).value);
+
+                if (value > 1) {
+                    document.getElementById(field).value = value -1;
+                }
+
+                change();
+        }
+
+        function next(field) {
+
+                var data = @Html.Raw(JsonConvert.SerializeObject(this.Model));
+                var value = parseInt(document.getElementById(field).value);
+                var listTotal = 0;
+
+                if (field == "CotoveloEsquerdo")
+                    listTotal = parseInt(data.CotoveloEsquerdoOptions.length);
+
+                if (field == "CotoveloDireito")
+                    listTotal = parseInt(data.CotoveloDireitoOptions.length);
+
+                if (field == "PulsoEsquerdo")
+                    listTotal = parseInt(data.PulsoEsquerdoOptions.length);
+
+                if (field == "PulsoDireito")
+                    listTotal = parseInt(data.PulsoDireitoOptions.length);
+
+                if (field == "JoelhoEsquerdo")
+                    listTotal = parseInt(data.JoelhoEsquerdoOptions.length);
+
+                if (field == "JoelhoDireito")
+                    listTotal = parseInt(data.JoelhoDireitoOptions.length);
+
+                if (field == "Quadril")
+                    listTotal = parseInt(data.QuadrilOptions.length);
+
+                if (field == "HeadRotation")
+                    listTotal = parseInt(data.HeadRotationOptions.length);
+
+                if (field == "HeadInclination")
+                    listTotal = parseInt(data.HeadInclinationOptions.length);
+
+                if (value < listTotal) {
+                    document.getElementById(field).value = value + 1;
+                }
+
+                change();
         }
 
         function change() {
@@ -86,27 +150,30 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <div class="col-lg-12">
                                     <label asp-for="CotoveloEsquerdo"></label>
+                                    <a onclick="back('CotoveloEsquerdo')" class="btn btn-primary"><i class="fa fa-backward"></i></a>
                                     <select id="CotoveloEsquerdo" asp-for="CotoveloEsquerdo"
-                                            class="form-control"
+                                            class="css-select"
                                             asp-items="@(new SelectList(Model.CotoveloEsquerdoOptions,"Id","Name"))" onchange="change()"></select>
+                                    <a onclick="next('CotoveloEsquerdo')" class="btn btn-large btn-primary"><i class="fa fa-forward"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <div class="col-lg-12">
                                     <label asp-for="PulsoEsquerdo"></label>
-
+                                    <a onclick="back('PulsoEsquerdo')" class="btn btn-primary"><i class="fa fa-backward"></i></a>
                                     <select id="PulsoEsquerdo" asp-for="PulsoEsquerdo"
-                                            class="form-control"
+                                            class="css-select"
                                             asp-items="@(new SelectList(Model.PulsoEsquerdoOptions,"Id","Name"))"></select>
+                                    <a onclick="next('PulsoEsquerdo')" class="btn btn-large btn-primary"><i class="fa fa-forward"></i></a>
                                 </div>
                                 <div>
                                     <br />
-                                    <span id="lblErrorLeftPulse" hidden>O pulso só pode ser alterado quando o cotovelo está totalmente contraído!</span>
+                                    <span style="padding-left:15px;" id="lblErrorLeftPulse" hidden>O pulso só pode ser alterado quando o cotovelo está totalmente contraído!</span>
                                 </div>
                             </div>
                         </div>
@@ -115,26 +182,30 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <div class="col-lg-12">
                                     <label asp-for="CotoveloDireito"></label>
+                                    <a onclick="back('CotoveloDireito')" class="btn btn-primary"><i class="fa fa-backward"></i></a>
                                     <select id="CotoveloDireito" asp-for="CotoveloDireito"
-                                            class="form-control"
+                                            class="css-select"
                                             asp-items="@(new SelectList(Model.CotoveloDireitoOptions,"Id","Name"))" onchange="change()"></select>
+                                    <a onclick="next('CotoveloDireito')" class="btn btn-large btn-primary"><i class="fa fa-forward"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <div class="col-lg-12">
                                     <label asp-for="PulsoDireito"></label>
+                                    <a onclick="back('PulsoDireito')" class="btn btn-primary"><i class="fa fa-backward"></i></a>
                                     <select id="PulsoDireito" asp-for="PulsoDireito"
-                                            class="form-control"
+                                            class="css-select"
                                             asp-items="@(new SelectList(Model.PulsoDireitoOptions,"Id","Name"))"></select>
+                                    <a onclick="next('PulsoDireito')" class="btn btn-large btn-primary"><i class="fa fa-forward"></i></a>
                                 </div>
                                 <div>
                                     <br />
-                                    <span id="lblErrorRightPulse" hidden>O pulso só pode ser alterado quando o cotovelo está totalmente contraído!</span>
+                                    <span style="padding-left:15px;" id="lblErrorRightPulse" hidden>O pulso só pode ser alterado quando o cotovelo está totalmente contraído!</span>
                                 </div>
                             </div>
                         </div>
@@ -161,11 +232,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <div class="col-lg-12">
                                     <label asp-for="JoelhoEsquerdo"></label>
+                                    <a onclick="back('JoelhoEsquerdo')" class="btn btn-primary"><i class="fa fa-backward"></i></a>
                                     <select id="JoelhoEsquerdo" asp-for="JoelhoEsquerdo"
-                                            class="form-control"
+                                            class="css-select"
                                             asp-items="@(new SelectList(Model.JoelhoEsquerdoOptions,"Id","Name"))"></select>
+                                    <a onclick="next('JoelhoEsquerdo')" class="btn btn-large btn-primary"><i class="fa fa-forward"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -174,11 +247,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <div class="col-lg-12">
                                     <label asp-for="JoelhoDireito"></label>
+                                    <a onclick="back('JoelhoDireito')" class="btn btn-primary"><i class="fa fa-backward"></i></a>
                                     <select id="JoelhoDireito" asp-for="JoelhoDireito"
-                                            class="form-control"
+                                            class="css-select"
                                             asp-items="@(new SelectList(Model.JoelhoDireitoOptions,"Id","Name"))"></select>
+                                    <a onclick="next('JoelhoDireito')" class="btn btn-large btn-primary"><i class="fa fa-forward"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -200,10 +275,12 @@
                                 <br />
                                 <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
                                 <div class="col-lg-12 col-center-block">
+                                    <a onclick="back('Quadril')" class="btn btn-primary"><i class="fa fa-backward"></i></a>
                                     <select id="Quadril" asp-for="Quadril"
-                                            class="form-control"
-                                            style="width:30%;"
+                                            class="css-select"
+                                            style="width:15%;"
                                             asp-items="@(new SelectList(Model.QuadrilOptions,"Id","Name"))"></select>
+                                    <a onclick="next('Quadril')" class="btn btn-large btn-primary"><i class="fa fa-forward"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -231,15 +308,16 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <div class="col-lg-12">
                                     <label asp-for="HeadRotation"></label>
+                                    <a onclick="back('HeadRotation')" class="btn btn-primary"><i class="fa fa-backward"></i></a>
                                     <select id="HeadRotation" asp-for="HeadRotation"
-                                            class="form-control"
+                                            class="css-select"
                                             asp-items="@(new SelectList(Model.HeadRotationOptions,"Id","Name"))"></select>
-                                </div>
-                                <div>
-                                    <br />
-                                    <span id="lblErrorHeadRotation" hidden>A cabeça não pode ser rotacionada quando estiver inclinada para baixo!</span>
+                                    <a onclick="next('HeadRotation')" class="btn btn-large btn-primary"><i class="fa fa-forward"></i></a>
+                                
+                                    
+                                    <span  id="lblErrorHeadRotation" hidden>A cabeça não pode ser rotacionada quando estiver inclinada para baixo!</span>
                                 </div>
                             </div>
 
@@ -249,11 +327,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <div class="col-lg-12">
                                     <label asp-for="HeadInclination"></label>
+                                    <a onclick="back('HeadInclination')" class="btn btn-primary"><i class="fa fa-backward"></i></a>
                                     <select id="HeadInclination" asp-for="HeadInclination"
-                                            class="form-control"
+                                            class="css-select"
                                             asp-items="@(new SelectList(Model.HeadInclinationOptions,"Id","Name"))" onchange="change()"></select>
+                                    <a onclick="next('HeadInclination')" class="btn btn-large btn-primary"><i class="fa fa-forward"></i></a>
                                 </div>
                             </div>
                         </div>

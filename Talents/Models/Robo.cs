@@ -15,7 +15,7 @@ namespace Robo.Models
         public int Id { get; set; }
 
         [Display(Name = "Cotovelo Esquerdo:")]
-        public int CotoveloEsquerdo { get; set; }
+        public int CotoveloEsquerdo { get; set; }       
 
         [Display(Name = "Cotovelo Direito:")]
         public int CotoveloDireito { get; set; }
@@ -76,7 +76,7 @@ namespace Robo.Models
         /// </summary>
         public Robo()
         {
-           
+
         }
     }
 }

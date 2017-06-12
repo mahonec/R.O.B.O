@@ -46,6 +46,16 @@ select.form-control {
     font-family:Arial;
 }
 
+
+.css-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-family: Arial;
+    margin-bottom: 20px;
+    height: 36px;
+}
+
 div.row {
     border: 3px solid;
     border-color: white;

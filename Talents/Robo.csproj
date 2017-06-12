@@ -1547,5 +1547,6 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink.Loader" Version="14.0.0" />
     <PackageReference Include="NETCore.MailKit" Version="1.0.1" />
+    <PackageReference Include="NewtonSoft.Json" Version="10.0.2" />
   </ItemGroup>
 </Project>
