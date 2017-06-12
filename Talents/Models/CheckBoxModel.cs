@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Talents.Models
+namespace Robo.Models
 {
     public class CheckBoxModel
     {

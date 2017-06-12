@@ -1,38 +1,160 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿* {
+    box-sizing: border-box;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+navbar {
+    font-family: Arial;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
+body {
+    margin: 0;
+    font-weight: 500;
+    font-family: 'HelveticaNeue';
+    background-color: black;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"]
-{
+section {
     width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: table;
+    margin: 0;
+    max-width: none;
+    background-color: black;
+    height: 100vh;
+    &:nth-of-type(2n)
+
+{
+    background-color: #FE4B74;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-  /* Hide captions */
-  .carousel-caption {
-    display: none
-  }
+}
+
+.Home {
+    height: 90vh;
+}
+
+.form-group {
+    margin-bottom:0px !important;
+}
+
+select.form-control {
+    margin-bottom: 10px;
+}
+
+.btn{
+    font-family:Arial;
+}
+
+div.row {
+    border: 3px solid;
+    border-color: white;
+}
+
+div.col {
+    text-align: center;
+    border: 2px solid;
+    border-color: white;
+    margin-bottom: 10px;
+ 
+}
+
+col-center-block table-bordered .content {
+    display: table-cell;
+    vertical-align: middle;
+    border-color: whitesmoke;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 15em;
+    display: block;
+    margin-bottom: -45px;
+    color: white;
+    font-weight: 400;
+    font-family: 'SF TransRobotics';
+}
+
+h3 {
+    font-size: 7em;
+    display: block;
+    color: white;
+    font-weight: 400;
+    font-family: 'SF TransRobotics';
+    padding-top: 50px;
+}
+
+h4 {
+    font-size: 2em;
+    display: block;
+    color: white;
+    font-weight: 200;
+    font-family: Arial;
+}
+
+span {
+    font-size: 1em;
+    display: block;
+    color: white;
+    font-weight: 200;
+    font-family: Arial;
+}
+
+h5 {
+    font-size: 3em;
+    display: block;
+    color: white;
+    font-weight: 400;
+    font-family: 'Segoe UI';
+}
+
+label {
+    font-size: 0,5em;
+    display: block;
+    color: white;
+    font-weight: 400;
+    font-family: Arial;
+}
+
+span {
+    font-family: Arial;
+}
+
+p {
+    font-size: 1.5em;
+    font-weight: 500;
+    color: black;
+    font-family: Arial;
+}
+
+}
+
+a {
+    font-weight: 700;
+    color: white;
+    position: relative;
+    &:hover
+
+{
+    opacity: 0.8;
+}
+
+&:active {
+    top: 1px;
+}
+
+}
+
+footer {
+    padding: 1% 5%;
+    text-align: center;
+    background-color: white;
+    color: black;
+    a
+
+{
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+}
 }

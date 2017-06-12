@@ -1,50 +1,281 @@
-﻿@model List<Talents.Models.People>
+﻿@model Robo.Models.Robo
+@section Scripts {
+    <script>
+        System.config({
+            packages: {
+                'app': { defaultExtension: 'js' },
+                'lib': { defaultExtension: 'js' },
+            },
+        });
+
+        System.import('app/main')
+            .then(null, console.error.bind(console));
+    </script>
+}
 <html>
 <head>
     <title>Index</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!-- Your Script -->
+    <script type="text/javascript">
+
+        function edit() {
+            $.ajax({
+                url: "/Home/Edit",
+                datatype: "text",
+                type: "POST",
+                success: function (data) {
+
+                },
+                error: function () {
+
+                }
+            });
+        }
+    </script>
+
 </head>
 <body>
-    <h1>Talentos EasyComTec</h1>
-    <div align="right">
-        <a href="@Url.Action("Insert", "Home")" class="btn btn-primary">
-            New
-            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-        </a>
-    </div>
-    <br />
+    <section id="Home" class="Home">
+        <div class="content" style="text-align:center;display:flex;align-items:center;">
+            <div class="col-md-6">
+                <h1 style="color:whitesmoke">R.O.B.O.</h1>
+                <p style="color:white;">(Robô Operacional Binariamente Orientado).</p>
+            </div>
+            <div class="col-md-6">
+                <img src="~/images/robot3.png" width="700" height="920" />
+            </div>
+        </div>
+    </section>
+    <hr />
+    <section id="About">
+        <div class="about">
+            <h3>Sobre o R.O.B.O</h3>
+            <span>
+                Nosso laboratório de projetos especiais nos solicitou o desenvolvimento de uma interface para controlar o projeto R.O.B.O. (Robô Operacional Binariamente Orientado). Para isso, foi solicitado que os controles do R.O.B.O. possam ser realizados através de uma API Web Restfull.
+            </span>
+        </div>
+    </section>
 
-    <table class="table" style="border:groove; border-bottom-width:3;">
-        <thead>
-            <tr>
-                <th class="col-xs-1" align="right">#</th>
-                <th class="col-md-2">Name</th>
-                <th class="col-md-2">Mail</th>
-                <th class="col-md-2">City</th>
-                <th class="col-md-2">Salary Requirements</th>
-                <th class="col-xs-1"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <th class="col-xs-1" align="right">@item.PeopleId</th>
-                    <td class="col-md-2">@item.Name</td>
-                    <td class="col-md-2">@item.Email</td>
-                    <td class="col-md-2">@item.City.Name</td>
-                    <td class="col-md-2">@Math.Round(item.Price,2)</td>
-                    <td class="col-xs-1" align="right">                       
-                        <a asp-action="Delete" asp-route-id="@item.PeopleId" class="btn btn-info" onclick="return confirm('Are you sure you to delete this Record? / Você tem certeza que deseja excluir esse registro?');">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        </a>
-                        <a asp-action="Update" asp-route-id="@item.PeopleId" class="btn btn-info">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        </a>
+    <section id="Parts">
+        <br />
+        <div class="col-lg-12">
+            <a style="float:right; margin-left:10px;" class="btn btn-large btn-primary" asp-area="" asp-controller="Home" asp-action="Edit">Editar</a>
+        </div>
 
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        <form asp-action="Index" novalidate style="padding-top:50px;">
+
+            <div class="form-group" hidden="hidden">
+                <input asp-for="Id" class="form-control" />
+            </div>
+
+
+            <div class="table-bordered">
+                <div class="row center-block">
+                    <div class="col-lg-12" style="text-align:center;">
+                        <h4>Braços</h4>
+                    </div>
+                </div>
+                <div class="row center-block">
+                    <div class="col-lg-6 col-center-block" style="border: 3px solid;border-color: white; text-align:center;">
+                        <span>Braço Esquerdo</span>
+                    </div>
+                    <div class="col-lg-6 col-center-block col-bordered" style="border: 3px solid;border-color: white; text-align:center;">
+                        <span>Braço Direito</span>
+                    </div>
+                </div>
+                <div class="row center-block">
+                    <div class="col-lg-6 col-center-block">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                    <label asp-for="CotoveloEsquerdo"></label>
+                                    <select id="CotoveloEsquerdo" asp-for="CotoveloEsquerdo"
+                                            class="form-control"
+                                            asp-items="@(new SelectList(@ViewBag.CotoveloEsquerdoOptions,"Id","Name"))" disabled></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                    <label asp-for="PulsoEsquerdo"></label>
+                                    <select id="PulsoEsquerdo" asp-for="PulsoEsquerdo"
+                                            class="form-control"
+                                            asp-items="@(new SelectList(@ViewBag.PulsoEsquerdoOptions,"Id","Name"))" disabled></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-center-block">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                    <label asp-for="CotoveloDireito"></label>
+                                    <select id="CotoveloDireito" asp-for="CotoveloDireito"
+                                            class="form-control"
+                                            asp-items="@(new SelectList(@ViewBag.CotoveloDireitoOptions,"Id","Name"))" disabled></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                    <label asp-for="PulsoDireito"></label>
+                                    <select id="PulsoDireito" asp-for="PulsoDireito"
+                                            class="form-control"
+                                            asp-items="@(new SelectList(@ViewBag.PulsoDireitoOptions,"Id","Name"))" disabled></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="table-bordered">
+                <div class="row center-block">
+                    <div class="col-lg-12" style="text-align:center;">
+                        <h4>Pernas</h4>
+                    </div>
+                </div>
+                <div class="row center-block">
+                    <div class="col-lg-6 col-center-block" style="border: 3px solid;border-color: white; text-align:center;">
+                        <span>Perna Esquerda</span>
+                    </div>
+                    <div class="col-lg-6 col-center-block col-bordered" style="border: 3px solid;border-color: white; text-align:center;">
+                        <span>Perna Direita</span>
+                    </div>
+                </div>
+                <div class="row center-block">
+                    <div class="col-lg-6 col-center-block">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                    <label asp-for="JoelhoEsquerdo"></label>
+                                    <select id="JoelhoEsquerdo" asp-for="JoelhoEsquerdo"
+                                            class="form-control"
+                                            asp-items="@(new SelectList(@ViewBag.JoelhoEsquerdoOptions,"Id","Name"))" disabled></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-center-block">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                    <label asp-for="JoelhoDireito"></label>
+                                    <select id="JoelhoDireito" asp-for="JoelhoDireito"
+                                            class="form-control"
+                                            asp-items="@(new SelectList(@ViewBag.JoelhoDireitoOptions,"Id","Name"))" disabled></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="table-bordered">
+                <div class="row center-block">
+                    <div class="col-lg-12" style="text-align:center;">
+                        <h4>Quadril</h4>
+                    </div>
+                </div>
+                <div class="row center-block">
+                    <div class="col-lg-12 col-center-block" style="text-align:center;">
+                        <div class="form-group">
+                            <div class="row">
+                                <br />
+                                <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="col-lg-12 col-center-block">
+                                    <select id="Quadril" asp-for="Quadril"
+                                            class="form-control"
+                                            style="width:30%;"
+                                            asp-items="@(new SelectList(@ViewBag.QuadrilOptions,"Id","Name"))" disabled></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="table-bordered">
+                <div class="row center-block">
+                    <div class="col-lg-12" style="text-align:center;">
+                        <h4>Cabeça</h4>
+                    </div>
+                </div>
+                <div class="row center-block">
+                    <div class="col-lg-6 col-center-block" style="border: 3px solid;border-color: white; text-align:center;">
+                        <span>Rotação</span>
+                    </div>
+                    <div class="col-lg-6 col-center-block col-bordered" style="border: 3px solid;border-color: white; text-align:center;">
+                        <span>Inclinação</span>
+                    </div>
+                </div>
+                <div class="row center-block">
+                    <div class="col-lg-6 col-center-block">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                    <label asp-for="HeadRotation"></label>
+                                    <select id="HeadRotation" asp-for="HeadRotation"
+                                            class="form-control"
+                                            asp-items="@(new SelectList(@ViewBag.HeadRotationOptions,"Id","Name"))" disabled></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-center-block">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                    <label asp-for="HeadInclination"></label>
+                                    <select id="HeadInclination" asp-for="HeadInclination"
+                                            class="form-control"
+                                            asp-items="@(new SelectList(@ViewBag.HeadInclinationOptions,"Id","Name"))" disabled></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br />
+        <br />
+    </section>
+    <hr />
+    <section id="Contact">
+        <div class="Contact">
+            <h3>R.O.B.O</h3><br />
+            <h5>Becomex Consulting</h5>
+            <span class="atendimento">
+                (47)<strong> 3425-0025</strong><br>
+                De segunda a sexta, das 9h às 18h
+            </span>
+            <br />
+            <br />
+            <address>
+                Rua XV de Novembro, 867 - 4° Andar - Centro, Joinville - SC, 89201-602
+            </address>
+
+            <address>
+                <strong>Support:</strong> <a href="mailto:Support@becomex.com">Support@becomex.com</a><br />
+                <strong>Vendas:</strong> <a href="mailto:Vendas@becomex.com">Vendas@becomex.com</a>
+            </address>
+
+        </div>
+    </section>
+
 </body>
 </html>

@@ -3,22 +3,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Talents</title>
+    <title>@ViewData["Title"] - R.O.B.O</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <script src="~/lib/npmlibs/angular/http.dev.js"></script>
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <script src="~/lib/npmlibs/angular/http.min.js"></script>
     </environment>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="font-family:Arial !important;">
+
+        <div class="container" style="float:left;">
+           
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -26,13 +30,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Talents</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">R.O.B.O</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a href="http://localhost:53773#Home">Home</a></li>
+                    <li><a  href="http://localhost:53773#About">Sobre</a></li>
+                    <li><a href="http://localhost:53773#Parts">Parts</a></li>
+                    <li><a href="http://localhost:53773#Contact">Contato</a></li>
                 </ul>
             </div>
         </div>
@@ -41,7 +46,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - Talents</p>
+            <p>&copy; 2017 - Becomex Consulting</p>
         </footer>
     </div>
 
