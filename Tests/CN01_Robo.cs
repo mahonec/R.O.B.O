@@ -2,7 +2,7 @@
 
 namespace Tests
 {
-    public class CN01_People
+    public class CN01_Robo
     {
         //[Fact]
         //public void InsertPeople()
